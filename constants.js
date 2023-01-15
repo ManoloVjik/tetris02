@@ -7,7 +7,8 @@ const KEY = {
     LEFT: 'ArrowLeft',      //37,
     RIGHT: 'ArrowRight',    //39,
     DOWN: 'ArrowDown',      //40,
-    SPACE: ' '               //32
+    SPACE: ' ',             //32,
+    UP: 'ArrowUp'           //38
 }
 
 Object.freeze(KEY);

@@ -15,7 +15,7 @@ function play() {
     board.reset();
     console.table(board.grid); // a pretty look of game board by matrix view
 
-    let piece = new Piece(ctx);
+    let piece = new Piece(ctx);  // Add a new piece (TEMPORARY!!!) - later it will group of pieces
     piece.draw();
 
     board.piece = piece;
@@ -25,7 +25,8 @@ const moves = {
     [KEY.LEFT]: p => ({ ...p, x: p.x - 1}),
     [KEY.RIGHT]: p => ({ ...p, x: p.x +1}),
     [KEY.DOWN]: p => ({ ...p, y: p.y + 1}),
-    [KEY.SPACE]: p => ({ ...p, y: p.y + 1})
+    [KEY.SPACE]: p => ({ ...p, y: p.y + 1}),
+    [KEY.UP]: (p) => board.rotate(p)
 };
 
 document.addEventListener('keydown', event => {
@@ -33,14 +34,10 @@ document.addEventListener('keydown', event => {
     //if (moves[KeyboardEvent.key])  {  
         // отмена действия по умолчанию
         event.preventDefault();
-        //console.log(event.key);
-
-        
+        //console.log(event.key);        
 
         // Get new coordinates of shape
-        let p = moves[event.key](board.piece);
-
-        
+        let p = moves[event.key](board.piece);        
 
         if (event.key === KEY.SPACE) {
             // Drop dawn shape by Space Key was pressed

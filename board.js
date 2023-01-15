@@ -38,4 +38,21 @@ class Board {
         });
     }
 
+    rotate(p) {
+        // Clone the matrix
+        let clone = JSON.parse(JSON.stringify(p));
+
+        // Algorithm of rotate - transponing of matrix
+        for (let y = 0; y < p.shape.length; ++y) {
+            for (let x = 0; x < y; ++x) {
+                [p.shape[x][y], p.shape[y][x]] = [p.shape[y][x], p.shape[x][y]];
+            }
+        }
+
+        // Change columns que
+        p.shape.forEach(row => row.reverse());
+
+        return clone;
+    }
+
 }
