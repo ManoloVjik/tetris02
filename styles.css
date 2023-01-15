@@ -1,0 +1,30 @@
+* {
+    font-family: 'VT323', cursive;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 320px 320px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-board {
+    border: solid 2px;
+}
+
+.play-button {
+    background-color: #4caf50;
+    font-size: 30px;
+    font-weight: bolder;
+    padding: 15px 100px;
+    cursor: pointer;
+}
+
+.next {
+    border: solid 2px;
+}
