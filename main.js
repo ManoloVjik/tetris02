@@ -24,27 +24,42 @@ function play() {
 const moves = {
     [KEY.LEFT]: p => ({ ...p, x: p.x - 1}),
     [KEY.RIGHT]: p => ({ ...p, x: p.x +1}),
-    [KEY.DOWN]: p => ({ ...p, y: p.y + 1})
+    [KEY.DOWN]: p => ({ ...p, y: p.y + 1}),
+    [KEY.SPACE]: p => ({ ...p, y: p.y + 1})
 };
 
 document.addEventListener('keydown', event => {
-    if (moves[event.code]) {
+    if (moves[event.key]) {
     //if (moves[KeyboardEvent.key])  {  
         // отмена действия по умолчанию
         event.preventDefault();
-        console.log(event.key);
+        //console.log(event.key);
+
+        
 
         // Get new coordinates of shape
-        let p = moves[event.code](board.piece);
+        let p = moves[event.key](board.piece);
 
-        // Check up a new position of shape
-        if (board.valid(p)) {
+        
+
+        if (event.key === KEY.SPACE) {
+            // Drop dawn shape by Space Key was pressed
+            while (board.valid(p)) {
+                board.piece.move(p);
+
+                // Erace the old look of shape on the canvas
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            board.piece.draw();
+
+            p = moves[KEY.DOWN](board.piece);
+            }
+        } else if (board.valid(p)) {   
+            // Check up a new position of shape
             // Real move a shape, if a new position is possible
             board.piece.move(p);
 
             // Erace the old look of shape on the canvas
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
             board.piece.draw();
         }
     }
