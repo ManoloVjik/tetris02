@@ -15,8 +15,10 @@ function play() {
     board.reset();
     console.table(board.grid); // a pretty look of game board by matrix view
 
-    let piece = new Piece(ctx);  // Add a new piece (TEMPORARY!!!) - later it will group of pieces
-    piece.draw();
+    let piece = new Piece(ctx);  
+    // Add a new piece (TEMPORARY!!!) - later it will group of pieces
+    //piece.draw();
+    piece.spawn();
 
     board.piece = piece;
 }

@@ -8,10 +8,34 @@ class Piece {
             [2, 2, 2],
             [0, 0, 0]
         ];
-
+        this.spawn();
         // Begin position
         this.x = 3;
         this.y = 0;
+    }
+
+    
+
+    move(p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    // parameter noOfTypes - it's quontity of variants
+    randomizeTetraminoTypes(noOfTypes) {
+        return Math.floor.apply(Math.random() * noOfTypes);
+    }
+    spawn() {
+        this.typeId = this.randomizeTetraminoTypes(COLORS.length -1);
+        this.shape = SHAPES[this.typeId];
+        this.color = COLORS[this.typeId];
+        this.x = 0;
+        this.y = 0;
+    }
+
+    // Set a shape in the middle of board
+    setStartPosition() {
+        this.x = this.typeId === 4 ? 4 : 3;
     }
 
     draw() {
@@ -26,10 +50,5 @@ class Piece {
                 }
             });
         });
-    }
-
-    move(p) {
-        this.x = p.x;
-        this.y = p.y;
     }
 }
