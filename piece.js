@@ -16,7 +16,7 @@ class Piece {
     }
 
     draw() {
-        console.log(this.shape);
+        //console.log(this.shape);
         this.ctx.fillStyle = this.color;
         this.shape.forEach((row, y) => {
             row.forEach((value, x) => {

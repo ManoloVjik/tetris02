@@ -55,4 +55,14 @@ class Board {
         return clone;
     }
 
+    draw() {
+        this.piece.draw();
+    }
+
+    drop() {
+        let p = moves[KEY.DOWN](this.piece);
+        if (this.valid(p)) {
+            this.piece.move(p);
+        }
+    }
 }
