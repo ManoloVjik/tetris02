@@ -10,6 +10,5 @@ const KEY = {
     SPACE: ' ',             //32,
     UP: 'ArrowUp'           //38
 }
-
 Object.freeze(KEY);
 
