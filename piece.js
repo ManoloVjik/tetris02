@@ -4,7 +4,7 @@ class Piece {
         this.ctx = ctx;
         this.spawn();
         /*this.color = 'blue';
-        this.shape = [
+        /*this.shape = [
             [2, 0, 0],
             [2, 2, 2],
             [0, 0, 0]
@@ -16,7 +16,7 @@ class Piece {
     }
 
     draw() {
-        //console.log(this.shape);
+        console.log(this.color);
         this.ctx.fillStyle = this.color;
         this.shape.forEach((row, y) => {
             row.forEach((value, x) => {

@@ -9,7 +9,7 @@ ctx.canvas.height = ROWS * BLOCK_SIZE;
 // Set a scale
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 
-let board = new Board();
+let board = new Board(ctx);
 
 const time = {start: 0, elapsed: 0, level: 1000};
 
