@@ -57,6 +57,7 @@ class Board {
 
     draw() {
         this.piece.draw();
+        
     }
 
     drop() {

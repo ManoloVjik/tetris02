@@ -11,7 +11,7 @@ ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 
 let board = new Board();
 
-const time = {start: 0, elapsed: 0, level: 0};
+const time = {start: 0, elapsed: 0, level: 1000};
 
 function animate(now = 0) {
     // Renew elapsed time
@@ -30,7 +30,8 @@ function animate(now = 0) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     // Let new draw the game board
-    board.draw();  //board.piece.draw();
+    board.draw();  
+    //board.piece.draw();
     requestAnimationFrame(animate);   //(this.animate.bind(this));
 }
 
@@ -45,7 +46,7 @@ function play() {
     board.piece.setStartPosition();
     animate();
 }
-
+//play();
 
 
 const moves = {
@@ -63,13 +64,13 @@ document.addEventListener('keydown', event => {
     //if (moves[KeyboardEvent.key])  {  
         // отмена действия по умолчанию
         event.preventDefault();
-        //console.log(event.key);        
+        console.log('key = ', event.key);        
 
         // Get new coordinates of shape
         let p = moves[event.key](board.piece);        
 
         if (event.key === KEY.SPACE) {
-            // Drop dawn shape by Space Key was pressed
+            // Drop dawn shape by Space Key was pressed - Hard Drop!
             while (board.valid(p)) {
                 board.piece.move(p);
 
