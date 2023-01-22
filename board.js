@@ -67,7 +67,7 @@ class Board {
         this.grid.forEach((row, y) => {
             row.forEach((value, x) => {
                 if (value > 0) {
-                    this.ctx.fillStyle = COLORS[value];
+                    this.ctx.fillStyle = COLORS[value - 1];
                     this.ctx.fillRect(x, y, 1, 1);
                 }
             });
