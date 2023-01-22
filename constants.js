@@ -2,7 +2,7 @@
 const COLS = 10;
 const ROWS = 20;
 const BLOCK_SIZE = 30;
-
+  
 const KEY = {
     LEFT: 'ArrowLeft',      //37,
     RIGHT: 'ArrowRight',    //39,
@@ -31,3 +31,29 @@ const SHAPES = [    // Our Shapes matrixes!!!
     [[0, 6, 0], [6, 6, 6], [0, 0, 0]],                          // T
     [[7, 7, 0], [0, 7, 7], [0, 0, 0]]                           // Z
 ];
+
+const POINTS = {    //23.01.2023
+    SINGLE: 100,
+    DOUBLE: 300,
+    TRIPLE: 500,
+    TETRIS: 800,
+    SOFT_DROP: 1,
+    HARD_DROP: 2
+}
+Object.freeze(POINTS);
+
+const LINES_PER_LEVEL = 10;
+const LEVEL = {
+    0: 800,
+    1: 720,
+    2: 630,
+    3: 550,
+    4: 480,
+    5: 420,
+    6: 370,
+    7: 340,
+    8: 310,
+    9: 290,
+    10: 280
+}
+Object.freeze(LEVEL);

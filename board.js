@@ -58,7 +58,7 @@ class Board {
     }
 
     draw() {
-        console.log(this.piece.color);
+        //console.log(this.piece.color);
         this.piece.draw();
         this.drawBoard();
     }
@@ -98,6 +98,21 @@ class Board {
         });
     }
 
+    getLineClearedPoints(lines, level) {     //23.01.2023
+        const linesClearPoints =
+            lines === 1 
+                ? POINTS.SINGLE 
+                : lines === 2 
+                ? POINTS.DOUBLE 
+                : lines === 3 
+                ? POINTS.TRIPLE 
+                : lines === 4 
+                ? POINTS.TETRIS 
+                : 0;
+        
+        return (level + 1) * linesClearPoints;
+    }
+
     clearLines() { //22.01.2023
         let lines = 0;
 
@@ -108,11 +123,31 @@ class Board {
                 
                 //to delete this row
                 this.grid.splice(y, 1);
+                // to add new lines to game board
+                //account.lines += 1;  //23.01.2023
 
                 // to add one empty row on the top of the grid
                 this.grid.unshift(Array(COLS).fill(0));
             }
         });
+
+        if (lines > 0) {    //23.01.2023
+            // Add score of clear lines
+            account.score += this.getLineClearedPoints(lines, account.level);
+            account.lines += lines;
+
+            // If we complete enough lines for Level complete, to go to the next Level
+            if (account.lines >= LINES_PER_LEVEL) {
+                // turn up the level
+                account.level++;
+                // reset lines counter
+                account.lines -= LINES_PER_LEVEL;
+                // turn up the speed
+                time.level = LEVEL[account.level];
+            }
+        }
     }
+
+    
     
 }
