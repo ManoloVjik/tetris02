@@ -52,4 +52,6 @@ class Piece {
     setStartPosition() {
         this.x = this.typeId === 4 ? 4 : 3;
     }
+
+    
 }

@@ -2,7 +2,9 @@
 
 class Board {
     constructor() {
+        this.ctx = ctx;
         this.piece = null;
+
     }
 
     // Reset game board at begin an every new game
@@ -78,6 +80,7 @@ class Board {
             this.piece.move(p);
         } else {
             this.freeze();
+            this.clearLines(); //22.01.2023
             console.table(this.grid);
 
             this.piece = new Piece(this.ctx);
@@ -95,4 +98,21 @@ class Board {
         });
     }
 
+    clearLines() { //22.01.2023
+        let lines = 0;
+
+        this.grid.forEach((row, y) => {
+            // if all cells in the row are full
+            if (row.every(value => value > 0)) {
+                lines++;
+                
+                //to delete this row
+                this.grid.splice(y, 1);
+
+                // to add one empty row on the top of the grid
+                this.grid.unshift(Array(COLS).fill(0));
+            }
+        });
+    }
+    
 }
