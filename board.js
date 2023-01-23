@@ -4,7 +4,6 @@ class Board {
     constructor() {
         this.ctx = ctx;
         this.piece = null;
-
     }
 
     // Reset game board at begin an every new game
@@ -17,14 +16,17 @@ class Board {
         return Array.from({length: ROWS}, () => Array(COLS).fill(0));
     }
 
+    // Check up if piece between walls
     insideWalls(x) {
         return x => 0 && x < COLS;
     }
 
+    // Check up if piece above the floor
     aboveFloor(y) {
         return y <= ROWS;
     }
 
+    // Check up if cells are not occupied other pieces
     notOccupied(x, y) {     // Check up if cell isn't occupied any pieces
         return this.grid[y] && this.grid[y][x] === 0;
     }

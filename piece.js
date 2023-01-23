@@ -3,16 +3,6 @@ class Piece {
     constructor(ctx) {
         this.ctx = ctx;
         this.spawn();
-        /*this.color = 'blue';
-        /*this.shape = [
-            [2, 0, 0],
-            [2, 2, 2],
-            [0, 0, 0]
-        ];
-
-        // Begin position
-        this.x = 3;
-        this.y = 0;*/
     }
 
     draw() {
@@ -40,8 +30,8 @@ class Piece {
         return Math.floor(Math.random() * noOfTypes);
     }
 
-    spawn() {
-        this.typeId = this.randomizeTetraminoType(COLORS.length); // in russian version = (COLORS.length - 1)
+    spawn() {   // Spawn a new shape on the game board
+        this.typeId = this.randomizeTetraminoType(COLORS.length);
         this.shape = SHAPES[this.typeId];
         this.color = COLORS[this.typeId];
         this.x = 0;

@@ -32,7 +32,7 @@ const SHAPES = [    // Our Shapes matrixes!!!
     [[7, 7, 0], [0, 7, 7], [0, 0, 0]]                           // Z
 ];
 
-const POINTS = {    //23.01.2023
+const POINTS = {    // Points of moves, lines and other //23.01.2023
     SINGLE: 100,
     DOUBLE: 300,
     TRIPLE: 500,
@@ -42,7 +42,7 @@ const POINTS = {    //23.01.2023
 }
 Object.freeze(POINTS);
 
-const LINES_PER_LEVEL = 10;
+const LINES_PER_LEVEL = 10;     // Levels system
 const LEVEL = {
     0: 800,
     1: 720,

@@ -38,12 +38,12 @@ let account = new Proxy(accountValues, {
 let requestId;
 
 function gameOver() {
-    cancelAnimationFrame(requestId); //cancelAnimationFrame(requestId);
-    this.ctx.fillStyle = 'black';    // PROBLEM with overing a game
-    this.ctx.fillRect(1, 3, 8, 1.2);
-    this.ctx.font = '1px Arial';
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillText('GAME OVER', 1.8, 4);
+    cancelAnimationFrame(requestId);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(1, 3, 8, 1.2);
+    ctx.font = '1px Arial';
+    ctx.fillStyle = 'red';
+    ctx.fillText('GAME OVER', 1.8, 4);
 }
 
 function animate(now = 0) {
@@ -59,9 +59,6 @@ function animate(now = 0) {
             gameOver();
             return;
         }
-        
-        // Move active shape of one step down
-        //board.drop();  //board.drop(); //22.01.2023!!!!
     }
 
     // Erase the board for new shape draw
@@ -69,20 +66,12 @@ function animate(now = 0) {
 
     // Let new draw the game board
     board.draw();  
-    //board.piece.draw();
-    requestId = requestAnimationFrame(animate);   //(this.animate.bind(this));
+    requestId = requestAnimationFrame(animate);
 }
 
 function play() {
-    //board.reset(); //23.01.2023
     resetGame();     //23.01.2023
     //console.table(board.grid); // a pretty look of game board by matrix view
-
-    //let piece = new Piece(ctx);  // Add a new piece (TEMPORARY!!!) - later it will group of pieces //23.01.2023
-    //piece.draw();
-
-    //board.piece = piece;  //23.01.2023
-    //board.piece.setStartPosition();   //23.01.2023
     animate();
 }
 
@@ -107,8 +96,7 @@ function resetGame() {
 
 
 document.addEventListener('keydown', event => {
-    if (moves[event.key]) {
-    //if (moves[KeyboardEvent.key])  {  
+    if (moves[event.key]) {  
         // отмена действия по умолчанию
         event.preventDefault();
         //console.log('key = ', event.key);        
