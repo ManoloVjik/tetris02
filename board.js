@@ -83,9 +83,15 @@ class Board {
             this.clearLines(); //22.01.2023
             console.table(this.grid);
 
+            if (this.piece.y === 0) {
+                // GAME OVER
+                return false;
+            }
+
             this.piece = new Piece(this.ctx);
             this.piece.setStartPosition();
         }
+        return true; // Game is longing
     }
 
     freeze() {
@@ -133,7 +139,9 @@ class Board {
 
         if (lines > 0) {    //23.01.2023
             // Add score of clear lines
-            account.score += this.getLineClearedPoints(lines, account.level);
+            console.log('this.lines', lines, 'this.level ', account.level, 'acc.level ', account.level);
+            console.log(this.getLineClearedPoints(lines, account.level)); //this.level));
+            account.score += this.getLineClearedPoints(lines, account.level); //this.level); //this.level);   //account.level
             account.lines += lines;
 
             // If we complete enough lines for Level complete, to go to the next Level

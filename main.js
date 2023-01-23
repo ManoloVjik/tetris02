@@ -35,6 +35,17 @@ let account = new Proxy(accountValues, {
     }
 });
 
+let requestId;
+
+function gameOver() {
+    cancelAnimationFrame(requestId); //cancelAnimationFrame(requestId);
+    this.ctx.fillStyle = 'black';    // PROBLEM with overing a game
+    this.ctx.fillRect(1, 3, 8, 1.2);
+    this.ctx.font = '1px Arial';
+    this.ctx.fillStyle = 'red';
+    this.ctx.fillText('GAME OVER', 1.8, 4);
+}
+
 function animate(now = 0) {
     // Renew elapsed time
     time.elapsed = now - time.start;
@@ -44,8 +55,13 @@ function animate(now = 0) {
         // Let begin a new time
         time.start = now;
 
+        if (!board.drop()) {
+            gameOver();
+            return;
+        }
+        
         // Move active shape of one step down
-        board.drop();  //board.drop();
+        //board.drop();  //board.drop(); //22.01.2023!!!!
     }
 
     // Erase the board for new shape draw
@@ -54,7 +70,7 @@ function animate(now = 0) {
     // Let new draw the game board
     board.draw();  
     //board.piece.draw();
-    requestAnimationFrame(animate);   //(this.animate.bind(this));
+    requestId = requestAnimationFrame(animate);   //(this.animate.bind(this));
 }
 
 function play() {
@@ -87,6 +103,8 @@ function resetGame() {
     board.piece = piece;
     board.piece.setStartPosition();
 }
+
+
 
 document.addEventListener('keydown', event => {
     if (moves[event.key]) {
