@@ -4,11 +4,14 @@ class Board {
     constructor() {
         this.ctx = ctx;
         this.piece = null;
+        this.ctxNext = this.ctxNext;    //23.01.2023
+        this.pieceNext = null;          //24.01.2023
     }
 
     // Reset game board at begin an every new game
     reset() {
         this.grid = this.getEmptyBoard();
+
     }
 
     // Create new board matrix with nills
@@ -63,7 +66,13 @@ class Board {
         //console.log(this.piece.color);
         this.piece.draw();
         this.drawBoard();
+
+        //ctxNext.piece.draw();
     }
+
+    //drawNext() {      //24.01.2023
+        //ctxNext.piece.draw();
+    //}
 
     drawBoard() {
         this.grid.forEach((row, y) => {
@@ -90,7 +99,11 @@ class Board {
                 return false;
             }
 
-            this.piece = new Piece(this.ctx);
+            //this.piece = new Piece(this.ctx);     //24.01.2023
+            this.pieceNext = new Piece(this.ctx);
+            this.piece = this.pieceNext;
+            this.pieceNext.drawNext(this.ctxNext);
+
             this.piece.setStartPosition();
         }
         return true; // Game is longing

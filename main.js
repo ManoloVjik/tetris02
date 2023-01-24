@@ -9,7 +9,17 @@ ctx.canvas.height = ROWS * BLOCK_SIZE;
 // Set a scale
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 
-let board = new Board(ctx);
+// Set new Canvas for next shape //24.01.2023
+const canvasNext = document.getElementById('next');
+const ctxNext = canvasNext.getContext('2d');
+// Set size of canvasNext
+ctxNext.canvas.width = 4 * BLOCK_SIZE;
+ctxNext.canvas.height = 4* BLOCK_SIZE;
+ctxNext.scale(BLOCK_SIZE, BLOCK_SIZE);
+
+//let board = new Board(ctx);
+
+let board = new Board(ctx, ctxNext); 
 
 const time = {start: 0, elapsed: 0, level: 1000};
 
