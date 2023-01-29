@@ -100,8 +100,9 @@ class Board {
             }
 
             //this.piece = new Piece(this.ctx);     //24.01.2023
-            this.pieceNext = new Piece(this.ctx);
+            this.pieceNext = new Piece(this.ctxNext);
             this.piece = this.pieceNext;
+            //this.pieceNext.draw(this.ctxNext);
             this.pieceNext.drawNext(this.ctxNext);
 
             this.piece.setStartPosition();
