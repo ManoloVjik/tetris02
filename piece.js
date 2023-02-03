@@ -23,7 +23,7 @@ class Piece {
     }
 
     drawNext() {      //24.01.2023
-        console.log('it is a drawNext!');
+        //console.log('it is a drawNext!');
         //this.ctxNext.fillStyle = this.color;
         //context.clearRect(0, 0, canvasNext.width, canvasNext.height);
         ctxNext.fillStyle = this.color;

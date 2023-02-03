@@ -12,11 +12,11 @@ const KEY = {
 }
 Object.freeze(KEY);
 
-const COLORS = [    // Colors for every shapes
+const COLORS = [    // Colors for  every shapes
     'cyan',         // I
     'blue',         // J
     'orange',       // L
-    'yellow',       // O
+    'silver',         // O
     'green',        // S
     'purple',       // T
     'red'           // Z

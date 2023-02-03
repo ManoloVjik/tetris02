@@ -10,12 +10,14 @@ h1 {
 .grid {
     display: grid;
     grid-template-columns: 320px 320px;
+    /*position: relative;*/
 }
 
 .right-column {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .game-board {
@@ -28,8 +30,13 @@ h1 {
     font-weight: bolder;
     padding: 15px 100px;
     cursor: pointer;
+    position: absolute;
+    /*vertical-align: bottom*/
+    top: 63.5%;
+    left: 320;
+    /*bottom: 0;*/
 }
 
-.next {
+/*.next {
     border: solid 2px;
-}
+}*/
