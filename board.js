@@ -11,7 +11,16 @@ class Board {
     // Reset game board at begin an every new game
     reset() {
         this.grid = this.getEmptyBoard();
+        this.piece = new Piece(this.ctx);   //////29.01.2023
+        this.piece.setStartPosition();      //////29.01.2023
+        this.getNewPiece();                 //////29.01.2023
+    }
 
+    getNewPiece() {                         //////29.01.2023 whole function of today!
+        this.pieceNext = new Piece(this.ctxNext);
+        //console.log(ctxNext.canvas.width, ctxNext.canvas.height);
+        ctxNext.clearRect(0, 0, ctxNext.canvas.width, ctxNext.canvas.height);
+        this.pieceNext.draw();
     }
 
     // Create new board matrix with nills
@@ -66,7 +75,6 @@ class Board {
         //console.log(this.piece.color);
         this.piece.draw();
         this.drawBoard();
-
         //ctxNext.piece.draw();
     }
 
@@ -92,7 +100,7 @@ class Board {
         } else {
             this.freeze();
             this.clearLines(); //22.01.2023
-            console.table(this.grid);
+            //console.table(this.grid);
 
             if (this.piece.y === 0) {
                 // GAME OVER
@@ -100,12 +108,15 @@ class Board {
             }
 
             //this.piece = new Piece(this.ctx);     //24.01.2023
-            this.pieceNext = new Piece(this.ctxNext);
+            //this.pieceNext = new Piece(this.ctxNext);
             this.piece = this.pieceNext;
-            //this.pieceNext.draw(this.ctxNext);
-            this.pieceNext.drawNext(this.ctxNext);
-
+            this.piece.ctx = this.ctx;
             this.piece.setStartPosition();
+            //this.pieceNext.draw(this.ctxNext);
+
+            this.pieceNext.drawNext(this.ctxNext); ////29.01.2023
+            this.getNewPiece();
+            
         }
         return true; // Game is longing
     }
@@ -155,8 +166,8 @@ class Board {
 
         if (lines > 0) {    //23.01.2023
             // Add score of clear lines
-            console.log('this.lines', lines, 'this.level ', account.level, 'acc.level ', account.level);
-            console.log(this.getLineClearedPoints(lines, account.level)); //this.level));
+            ////console.log('this.lines', lines, 'this.level ', account.level, 'acc.level ', account.level);
+            ////console.log(this.getLineClearedPoints(lines, account.level)); //this.level));
             account.score += this.getLineClearedPoints(lines, account.level); //this.level); //this.level);   //account.level
             account.lines += lines;
 
