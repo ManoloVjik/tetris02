@@ -18,9 +18,9 @@ class Board {
 
     getNewPiece() {                         //////29.01.2023 whole function of today!
         this.pieceNext = new Piece(this.ctxNext);
-        //console.log(ctxNext.canvas.width, ctxNext.canvas.height);
+        console.log(ctxNext.canvas.width, ctxNext.canvas.height);
         ctxNext.clearRect(0, 0, ctxNext.canvas.width, ctxNext.canvas.height);
-        this.pieceNext.draw();
+        this.pieceNext.drawNext(); //03.02.2023
     }
 
     // Create new board matrix with nills
