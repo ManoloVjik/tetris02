@@ -54,6 +54,9 @@ function gameOver() {
     ctx.font = '1px Arial';
     ctx.fillStyle = 'red';
     ctx.fillText('GAME OVER', 1.8, 4);
+
+    //newScore.level = account.level;
+    checkHighScore(account.score);  //04.02.2023
 }
 
 function animate(now = 0) {

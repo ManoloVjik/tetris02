@@ -16,7 +16,7 @@ const COLORS = [    // Colors for  every shapes
     'cyan',         // I
     'blue',         // J
     'orange',       // L
-    'silver',         // O
+    'khaki',         // O
     'green',        // S
     'purple',       // T
     'red'           // Z
@@ -67,3 +67,7 @@ const LEVEL = {
     20: 120
 }
 Object.freeze(LEVEL);
+
+const NO_OF_HIGH_SCORES = 10;
+const HIGH_SCORES = 'highScores';
+
